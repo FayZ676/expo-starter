@@ -9,18 +9,18 @@ export default function SettingsScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ThemedView style={styles.container}>
-      <ThemedText type="title" style={styles.title}>
-        Settings
-      </ThemedText>
+        <ThemedText type="title" style={styles.title}>
+          Settings
+        </ThemedText>
 
-      <ThemedView style={styles.section}>
-        <Link href="/feedback" asChild>
-          <Pressable style={styles.button}>
-            <ThemedText type="defaultSemiBold">Feedback & Support</ThemedText>
-          </Pressable>
-        </Link>
+        <ThemedView style={styles.section}>
+          <Link href="/feedback" asChild>
+            <Pressable style={styles.button}>
+              <ThemedText type="defaultSemiBold">Feedback & Support</ThemedText>
+            </Pressable>
+          </Link>
+        </ThemedView>
       </ThemedView>
-    </ThemedView>
     </SafeAreaView>
   );
 }

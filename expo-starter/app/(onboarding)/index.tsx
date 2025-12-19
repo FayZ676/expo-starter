@@ -9,15 +9,15 @@ export default function OnboardingStepOne() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ThemedView style={styles.container}>
-      <ThemedText type="title">Welcome</ThemedText>
-      <ThemedText style={styles.description}>
-        This is the first step of the onboarding process.
-      </ThemedText>
+        <ThemedText type="title">Welcome</ThemedText>
+        <ThemedText style={styles.description}>
+          This is the first step of the onboarding process.
+        </ThemedText>
 
-      <Link href="/(onboarding)/step-two" style={styles.link}>
-        <ThemedText type="link">Next</ThemedText>
-      </Link>
-    </ThemedView>
+        <Link href="/(onboarding)/step-two" style={styles.link}>
+          <ThemedText type="link">Next</ThemedText>
+        </Link>
+      </ThemedView>
     </SafeAreaView>
   );
 }

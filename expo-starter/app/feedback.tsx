@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { useRouter } from "expo-router";
 import { StyleSheet, TextInput, Pressable } from "react-native";
 import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -8,6 +8,7 @@ import { ThemedView } from "@/components/themed-view";
 
 export default function FeedbackScreen() {
   const [feedback, setFeedback] = useState("");
+  const router = useRouter();
 
   const handleSubmit = () => {
     // Placeholder for form submission logic
@@ -18,29 +19,29 @@ export default function FeedbackScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ThemedView style={styles.container}>
-      <ThemedText type="title">Feedback & Support</ThemedText>
-      <ThemedText style={styles.description}>
-        We'd love to hear from you. Share your thoughts or report issues.
-      </ThemedText>
+        <ThemedText type="title">Feedback & Support</ThemedText>
+        <ThemedText style={styles.description}>
+          We'd love to hear from you. Share your thoughts or report issues.
+        </ThemedText>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your feedback..."
-        placeholderTextColor="#888"
-        multiline
-        numberOfLines={6}
-        value={feedback}
-        onChangeText={setFeedback}
-      />
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your feedback..."
+          placeholderTextColor="#888"
+          multiline
+          numberOfLines={6}
+          value={feedback}
+          onChangeText={setFeedback}
+        />
 
-      <Pressable style={styles.button} onPress={handleSubmit}>
-        <ThemedText type="defaultSemiBold">Submit</ThemedText>
-      </Pressable>
+        <Pressable style={styles.button} onPress={handleSubmit}>
+          <ThemedText type="defaultSemiBold">Submit</ThemedText>
+        </Pressable>
 
-      <Link href="/" dismissTo style={styles.link}>
-        <ThemedText type="link">Close</ThemedText>
-      </Link>
-    </ThemedView>
+        <Pressable onPress={() => router.back()} style={styles.link}>
+          <ThemedText type="link">Close</ThemedText>
+        </Pressable>
+      </ThemedView>
     </SafeAreaView>
   );
 }

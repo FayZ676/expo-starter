@@ -9,15 +9,15 @@ export default function OnboardingStepThree() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ThemedView style={styles.container}>
-      <ThemedText type="title">Get Started</ThemedText>
-      <ThemedText style={styles.description}>
-        You're all set! Let's get started.
-      </ThemedText>
+        <ThemedText type="title">Get Started</ThemedText>
+        <ThemedText style={styles.description}>
+          You're all set! Let's get started.
+        </ThemedText>
 
-      <Link href="/(tabs)" style={styles.link}>
-        <ThemedText type="link">Finish</ThemedText>
-      </Link>
-    </ThemedView>
+        <Link href="/" style={styles.link}>
+          <ThemedText type="link">Finish</ThemedText>
+        </Link>
+      </ThemedView>
     </SafeAreaView>
   );
 }
