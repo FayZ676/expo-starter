@@ -1,36 +1,41 @@
-import { Link } from "expo-router";
-import { StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useRouter } from "expo-router";
+import { StyleSheet, ScrollView, Pressable } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ThemedText } from "@/components/themed-text";
-import { ThemedView } from "@/components/themed-view";
+import { useThemeColor } from "@/hooks/use-theme-color";
 
 export default function OnboardingStepThree() {
-  return (
-    <SafeAreaView style={styles.safeArea}>
-      <ThemedView style={styles.container}>
-        <ThemedText type="title">Get Started</ThemedText>
-        <ThemedText style={styles.description}>
-          You're all set! Let's get started.
-        </ThemedText>
+  const backgroundColor = useThemeColor({}, "background");
+  const insets = useSafeAreaInsets();
+  const router = useRouter();
 
-        <Link href="/" style={styles.link}>
-          <ThemedText type="link">Finish</ThemedText>
-        </Link>
-      </ThemedView>
-    </SafeAreaView>
+  return (
+    <ScrollView
+      style={{ backgroundColor, flex: 1 }}
+      contentContainerStyle={[
+        styles.container,
+        { paddingTop: insets.top, paddingBottom: insets.bottom },
+      ]}
+    >
+      <ThemedText type="title">Get Started</ThemedText>
+      <ThemedText style={styles.description}>
+        You're all set! Let's get started.
+      </ThemedText>
+
+      <Pressable onPress={() => router.replace("/(tabs)")} style={styles.link}>
+        <ThemedText type="link">Finish</ThemedText>
+      </Pressable>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
   container: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+    flexGrow: 1,
   },
   description: {
     marginTop: 20,

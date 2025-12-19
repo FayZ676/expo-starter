@@ -1,36 +1,40 @@
 import { Link } from "expo-router";
-import { StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet, ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ThemedText } from "@/components/themed-text";
-import { ThemedView } from "@/components/themed-view";
+import { useThemeColor } from "@/hooks/use-theme-color";
 
 export default function OnboardingStepOne() {
-  return (
-    <SafeAreaView style={styles.safeArea}>
-      <ThemedView style={styles.container}>
-        <ThemedText type="title">Welcome</ThemedText>
-        <ThemedText style={styles.description}>
-          This is the first step of the onboarding process.
-        </ThemedText>
+  const backgroundColor = useThemeColor({}, "background");
+  const insets = useSafeAreaInsets();
 
-        <Link href="/(onboarding)/step-two" style={styles.link}>
-          <ThemedText type="link">Next</ThemedText>
-        </Link>
-      </ThemedView>
-    </SafeAreaView>
+  return (
+    <ScrollView
+      style={{ backgroundColor, flex: 1 }}
+      contentContainerStyle={[
+        styles.container,
+        { paddingTop: insets.top, paddingBottom: insets.bottom },
+      ]}
+    >
+      <ThemedText type="title">Welcome</ThemedText>
+      <ThemedText style={styles.description}>
+        This is the first step of the onboarding process.
+      </ThemedText>
+
+      <Link href="/(onboarding)/step-two" style={styles.link}>
+        <ThemedText type="link">Next</ThemedText>
+      </Link>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
   container: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+    flexGrow: 1,
   },
   description: {
     marginTop: 20,

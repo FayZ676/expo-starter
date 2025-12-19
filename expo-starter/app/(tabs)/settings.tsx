@@ -1,36 +1,40 @@
 import { Link } from "expo-router";
-import { StyleSheet, Pressable } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet, Pressable, ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
+import { useThemeColor } from "@/hooks/use-theme-color";
 
 export default function SettingsScreen() {
-  return (
-    <SafeAreaView style={styles.safeArea}>
-      <ThemedView style={styles.container}>
-        <ThemedText type="title" style={styles.title}>
-          Settings
-        </ThemedText>
+  const backgroundColor = useThemeColor({}, "background");
+  const insets = useSafeAreaInsets();
 
-        <ThemedView style={styles.section}>
-          <Link href="/feedback" asChild>
-            <Pressable style={styles.button}>
-              <ThemedText type="defaultSemiBold">Feedback & Support</ThemedText>
-            </Pressable>
-          </Link>
-        </ThemedView>
+  return (
+    <ScrollView
+      style={{ backgroundColor, flex: 1 }}
+      contentContainerStyle={[
+        styles.container,
+        { paddingTop: insets.top, paddingBottom: insets.bottom },
+      ]}
+    >
+      <ThemedText type="title" style={styles.title}>
+        Settings
+      </ThemedText>
+
+      <ThemedView style={styles.section}>
+        <Link href="/feedback" asChild>
+          <Pressable style={styles.button}>
+            <ThemedText type="defaultSemiBold">Feedback & Support</ThemedText>
+          </Pressable>
+        </Link>
       </ThemedView>
-    </SafeAreaView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
   container: {
-    flex: 1,
     padding: 20,
   },
   title: {
