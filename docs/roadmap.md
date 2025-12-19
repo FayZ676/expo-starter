@@ -1,0 +1,13 @@
+- Instructions on setting up the GitHub pages.
+- Essential app pages
+  - Paywall
+  - Onboarding
+  - Feedback
+  - Settings
+- Essential app functionality
+  - Restore purchases
+- Essential libraries
+  - RevenueCat
+  - GetForm
+- GetForm integration for the support page and Feedback screen.
+- Instructions on creating and submitting builds with eas
